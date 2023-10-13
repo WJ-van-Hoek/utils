@@ -2,7 +2,7 @@ package com.general.utils.docker.services;
 
 import com.general.utils.docker.client.DockerClientConfigFactory;
 import com.general.utils.docker.client.DockerHttpClientFactory;
-import com.general.utils.docker.container.Container;
+import com.general.utils.docker.container.ContainerResponse;
 import com.general.utils.docker.container.Launcher;
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.core.DockerClientBuilder;
@@ -19,7 +19,7 @@ public abstract class AbstractDockerService implements DockerService {
 	dockerClient = DockerClientBuilder.getInstance(config).withDockerHttpClient(client).build();
     }
 
-    public Container launchContainer(String image, String name, String version) {
+    public ContainerResponse launchContainer(String image, String name, String version) {
 	return Launcher.launchContainer(this.dockerClient, image, name, version);
     }
 

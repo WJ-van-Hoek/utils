@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Container {
+public abstract class Container {
     private final String baseImage;
     private final String name;
     private final String version;

@@ -9,12 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 public class Launcher {
     private Launcher() {}
     
-    public static Container launchContainer(DockerClient dockerClient, String imageName, String containerName, String version) {
+    public static ContainerResponse launchContainer(DockerClient dockerClient, String imageName, String containerName, String version) {
 	try {
 	    launchContainerRaw(dockerClient, imageName, containerName, version);
 
 	    log.info("Docker container started successfully");
-	    return new Container(imageName, containerName, version);
+	    return new ContainerResponse(imageName, containerName, version);
 	} catch (Exception e) {
 	    log.error("Error starting Docker container: ", e);
 	    return null;
