@@ -21,11 +21,11 @@
 	</properties>
 
 	<distributionManagement>
-		<repository>
-			<id>internal.repo</id>
-			<name>Temporary Staging Repository</name>
-			<url>file://${project.build.directory}/mvn-artifact</url>
-		</repository>
+	   <repository>
+	     <id>github</id>
+	     <name>GitHub OWNER Apache Maven Packages</name>
+	     <url>https://maven.pkg.github.com/WJ-van-Hoek/utils/</url>
+	   </repository>
 	</distributionManagement>
 
 	<dependencies>
