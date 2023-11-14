@@ -8,9 +8,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.general.utils</groupId>
-	<artifactId>docker-services</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>docker-services</name>
+	<artifactId>docker-utils</artifactId>
+	<version>0.0.2</version>
+	<name>docker-utils</name>
 
 	<dependencies>
 		<dependency>
