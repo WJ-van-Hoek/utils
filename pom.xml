@@ -21,11 +21,11 @@
 	</properties>
 
 	<distributionManagement>
-		<repository>
-			<id>internal.repo</id>
-			<name>Temporary Staging Repository</name>
-			<url>file://${project.build.directory}/mvn-artifact</url>
-		</repository>
+	   <repository>
+	     <id>github</id>
+	     <name>GitHub OWNER Apache Maven Packages</name>
+	     <url>https://maven.pkg.github.com/WJ-van-Hoek/utils/</url>
+	   </repository>
 	</distributionManagement>
 
 	<dependencies>
@@ -51,15 +51,6 @@
 					<configuration>
 						<source>17</source>
 						<target>17</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>3.1.1</version>
-					<configuration>
-						<altDeploymentRepository>
-							internal.repo::default::file://${user.dir}/target/mvn-artifact
-						</altDeploymentRepository>
 					</configuration>
 				</plugin>
 				<plugin>
