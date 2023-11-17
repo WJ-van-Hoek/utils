@@ -7,9 +7,9 @@
 		<artifactId>utils</artifactId>
 		<version>0.0.2</version>
 	</parent>
+
 	<groupId>com.general.utils</groupId>
 	<artifactId>docker-utils</artifactId>
-	<version>0.0.2</version>
 	<name>docker-utils</name>
 
 	<dependencies>
