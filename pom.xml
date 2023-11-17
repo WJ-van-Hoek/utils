@@ -22,11 +22,11 @@
 	</properties>
 
 	<distributionManagement>
-	   <repository>
-	     <id>github</id>
-	     <name>GitHub OWNER Apache Maven Packages</name>
-	     <url>https://maven.pkg.github.com/WJ-van-Hoek/utils/</url>
-	   </repository>
+		<repository>
+			<id>github</id>
+			<name>GitHub OWNER Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/WJ-van-Hoek/utils/</url>
+		</repository>
 	</distributionManagement>
 
 	<dependencies>
@@ -89,6 +89,26 @@
 								<goal>site</goal>
 							</goals>
 							<phase>deploy</phase>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.11</version>
+					<executions>
+						<execution>
+							<id>prepare-agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>report</id>
+							<phase>test</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
 						</execution>
 					</executions>
 				</plugin>
