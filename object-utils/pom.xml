@@ -7,6 +7,8 @@
 		<artifactId>utils</artifactId>
 		<version>0.0.2</version>
 	</parent>
+
+	<groupId>com.general.utils</groupId>
 	<artifactId>object-utils</artifactId>
 	<name>object-utils</name>
 	<description>Utils that apply to all objects</description>
