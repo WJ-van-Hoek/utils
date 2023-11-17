@@ -2,6 +2,9 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+orbs:
+  codecov: codecov/codecov@3.3.0
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -16,8 +19,10 @@ jobs:
     steps:
       - checkout
       - run: mvn -B clean install -B -V -Dspring.profiles.active=default
-      - run: bash <(curl -s https://codecov.io/bash)
-
+      - codecov/upload
+          
+      - store_test_results:
+          path: target/surefire-reports
 
 workflows:
   build-and-test:
