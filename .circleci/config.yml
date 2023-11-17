@@ -19,6 +19,7 @@ jobs:
     steps:
       - checkout
       - run: mvn -B clean install -B -V -Dspring.profiles.active=default
+      - codecov/upload
           
       - store_test_results:
           path: target/surefire-reports
@@ -27,4 +28,4 @@ workflows:
   build-and-test:
     jobs:
       - build
-      - codecov/upload
+      
