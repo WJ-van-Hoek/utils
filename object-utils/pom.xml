@@ -5,11 +5,12 @@
 	<parent>
 		<groupId>com.general</groupId>
 		<artifactId>utils</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.1</version>
 	</parent>
 
 	<groupId>com.general.utils</groupId>
 	<artifactId>object-utils</artifactId>
+	<version>0.0.1</version>
 	<name>object-utils</name>
 	<description>Utils that apply to all objects</description>
 </project>
