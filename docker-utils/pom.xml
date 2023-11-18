@@ -5,23 +5,31 @@
 	<parent>
 		<groupId>com.general</groupId>
 		<artifactId>utils</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.1</version>
 	</parent>
 
 	<groupId>com.general.utils</groupId>
 	<artifactId>docker-utils</artifactId>
+	<version>0.0.1</version>
 	<name>docker-utils</name>
+
+	<packaging>jar</packaging>
+
+	<properties>
+		<docker-java.version>3.3.3</docker-java.version>
+		<docker-java-transport-httpclient5.version>3.3.3</docker-java-transport-httpclient5.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.github.docker-java</groupId>
 			<artifactId>docker-java</artifactId>
-			<version>3.3.3</version>
+			<version>${docker-java.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.docker-java</groupId>
 			<artifactId>docker-java-transport-httpclient5</artifactId>
-			<version>3.3.3</version>
+			<version>${docker-java-transport-httpclient5.version}</version>
 		</dependency>
 	</dependencies>
 </project>
