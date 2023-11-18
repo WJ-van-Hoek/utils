@@ -20,6 +20,7 @@
 		<junit.version>4.13.2</junit.version>
 		<log4j2.version>3.1.4</log4j2.version>
 		<lombok.version>1.18.30</lombok.version>
+		<mvn-checkstyle-plugin.version>3.1.1</mvn-checkstyle-plugin.version>
 		<mvn-compiler-plugin.version>3.11.0</mvn-compiler-plugin.version>
 		<mvn-project-info-reports.version>3.4.5</mvn-project-info-reports.version>
 		<mvn-resources-plugin.version>3.3.1</mvn-resources-plugin.version>
@@ -33,13 +34,16 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
-
 	<distributionManagement>
 		<repository>
 			<id>github</id>
 			<name>GitHub OWNER Apache Maven Packages</name>
 			<url>https://maven.pkg.github.com/WJ-van-Hoek/utils/</url>
 		</repository>
+		<site>
+			<id>utils-site-id</id>
+			<url>${project.basedir}</url>
+		</site>
 	</distributionManagement>
 
 	<dependencies>
@@ -66,6 +70,12 @@
 	<build>
 		<plugins>
 			<plugin>
+				<!--to run: mvn site:site site:stage -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>${mvn-site-plugin.version}</version>
+			</plugin>
+			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco.version}</version>
@@ -83,11 +93,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>${mvn-site-plugin.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -147,10 +152,47 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${mvn-checkstyle-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>checkstyle-validation</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- Checkstyle configuration options -->
+					<failOnViolation>false</failOnViolation>
+				</configuration>				
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<!-- to run: mvn checkstyle:checkstyle -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${mvn-checkstyle-plugin.version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>checkstyle</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>${mvn-project-info-reports.version}</version>
 			</plugin>
 		</plugins>
-	</build>
+	</reporting>
 
 </project>

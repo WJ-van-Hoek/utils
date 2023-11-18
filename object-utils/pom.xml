@@ -13,4 +13,7 @@
 	<version>0.0.1</version>
 	<name>object-utils</name>
 	<description>Utils that apply to all objects</description>
+
+	<packaging>jar</packaging>
+
 </project>
