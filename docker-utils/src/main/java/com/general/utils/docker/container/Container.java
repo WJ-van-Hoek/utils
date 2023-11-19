@@ -14,12 +14,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * Abstract base class representing a container entity.
- * This class provides common attributes for containers.
+ * Abstract base class representing a container entity. This class provides
+ * common attributes for containers.
  */
-@Getter
+@Getter 
 @AllArgsConstructor
-public abstract class Container {
+public class Container {
     /** The base image used for creating the container. */
     private final String baseImage;
 

@@ -20,17 +20,22 @@ import com.github.dockerjava.core.DockerClientConfig;
 import com.github.dockerjava.transport.DockerHttpClient;
 
 public abstract class AbstractDockerService implements DockerService {
-    
+
     private final DockerClient dockerClient;
 
     protected AbstractDockerService(String dockerHost) {
-	DockerClientConfig config = DockerClientConfigFactory.createDockerClientConfig(dockerHost);
-	DockerHttpClient client = DockerHttpClientFactory.createDockerHttpClient(config);
-	dockerClient = DockerClientBuilder.getInstance(config).withDockerHttpClient(client).build();
+        DockerClientConfig config = DockerClientConfigFactory
+                .createDockerClientConfig(dockerHost);
+        DockerHttpClient client = DockerHttpClientFactory
+                .createDockerHttpClient(config);
+        dockerClient = DockerClientBuilder.getInstance(config)
+                .withDockerHttpClient(client).build();
     }
 
-    public ContainerResponse launchContainer(String image, String name, String version) {
-	return Launcher.launchContainer(this.dockerClient, image, name, version);
+    public ContainerResponse launchContainer(String image, String name,
+            String version) {
+        return Launcher.launchContainer(this.dockerClient, image, name,
+                version);
     }
 
 }
