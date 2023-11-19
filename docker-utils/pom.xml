@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>com.general</groupId>
 		<artifactId>utils</artifactId>
-		<version>0.0.1</version>
+		<version>0.0.2</version>
 	</parent>
 
 	<groupId>com.general.utils</groupId>
 	<artifactId>docker-utils</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<name>docker-utils</name>
 
 	<packaging>jar</packaging>
