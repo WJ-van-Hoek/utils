@@ -162,11 +162,7 @@
 							<goal>check</goal>
 						</goals>
 					</execution>
-				</executions>
-				<configuration>
-					<!-- Checkstyle configuration options -->
-					<failOnViolation>false</failOnViolation>
-				</configuration>				
+				</executions>			
 			</plugin>
 		</plugins>
 	</build>
