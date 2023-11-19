@@ -17,7 +17,7 @@ import lombok.Getter;
  * Abstract base class representing a container entity. This class provides
  * common attributes for containers.
  */
-@Getter 
+@Getter
 @AllArgsConstructor
 public class Container {
     /** The base image used for creating the container. */
