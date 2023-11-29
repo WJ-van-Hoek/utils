@@ -18,7 +18,12 @@ jobs:
 
     steps:
       - checkout
-      - run: mvn -B clean install -B -V -Dspring.profiles.active=default
+      - run:
+          name: Build and Install Docker-Utils
+          command: mvn -s .circleci/settings.xml -f docker-utils/pom.xml clean install -Dspring.profiles.active=default
+      - run:
+          name: Build and Install Object-Utils
+          command: mvn -s .circleci/settings.xml -f object-utils/pom.xml clean install -Dspring.profiles.active=default
       - codecov/upload
           
       - store_test_results:

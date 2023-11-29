@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.general</groupId>
-		<artifactId>utils</artifactId>
-		<version>0.0.2</version>
+		<artifactId>parent-pom</artifactId>
+		<version>0.0.6</version>
 	</parent>
 
 	<groupId>com.general.utils</groupId>
 	<artifactId>docker-utils</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<name>docker-utils</name>
 
 	<packaging>jar</packaging>
@@ -19,6 +19,21 @@
 		<docker-java.version>3.3.3</docker-java.version>
 		<docker-java-transport-httpclient5.version>3.3.3</docker-java-transport-httpclient5.version>
 	</properties>
+	
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub OWNER Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/WJ-van-Hoek/utils</url>
+		</repository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/WJ-van-Hoek/parent-pom</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<dependency>
