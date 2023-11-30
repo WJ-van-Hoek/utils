@@ -10,7 +10,7 @@
 
 	<groupId>com.general.utils</groupId>
 	<artifactId>object-utils</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<name>object-utils</name>
 	<description>Utils that apply to all objects</description>
 
