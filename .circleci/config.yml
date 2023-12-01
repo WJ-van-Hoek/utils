@@ -24,6 +24,9 @@ jobs:
       - run:
           name: Build and Install Object-Utils
           command: mvn -s .circleci/settings.xml -f object-utils/pom.xml clean install -Dspring.profiles.active=default
+      - run:
+          name: Build and Install Json-Utils
+          command: mvn -s .circleci/settings.xml -f json-utils/pom.xml clean install -Dspring.profiles.active=default
       - codecov/upload
           
       - store_test_results:
