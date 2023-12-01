@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.general</groupId>
+		<artifactId>parent-pom</artifactId>
+		<version>0.0.6</version>
+	</parent>
+
+	<groupId>com.general.utils</groupId>
+	<artifactId>json-utils</artifactId>
+	<version>0.0.0</version>
+	<name>json-utils</name>
+
+	<packaging>jar</packaging>
+	
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub OWNER Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/WJ-van-Hoek/utils</url>
+		</repository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/WJ-van-Hoek/parent-pom</url>
+		</repository>
+	</repositories>
+</project>
