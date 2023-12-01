@@ -135,3 +135,13 @@ replay_pid*
 /object-utils/target/surefire-reports/2023-11-17T10-29-25_625-jvmRun1.dump
 /object-utils/target/surefire-reports/TEST-com.general.utils.object.mappers.ObjectToMapMapperTest.xml
 /object-utils/target/surefire-reports/com.general.utils.object.mappers.ObjectToMapMapperTest.txt
+/json-utils/.classpath
+/json-utils/.factorypath
+/json-utils/.project
+/json-utils/.settings/org.eclipse.core.resources.prefs
+/json-utils/.settings/org.eclipse.jdt.apt.core.prefs
+/json-utils/.settings/org.eclipse.jdt.core.prefs
+/json-utils/.settings/org.eclipse.m2e.core.prefs
+/json-utils/.settings/org.springframework.ide.eclipse.prefs
+/docker-utils/.settings/org.eclipse.core.resources.prefs
+/object-utils/.settings/org.eclipse.core.resources.prefs
