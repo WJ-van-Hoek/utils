@@ -14,7 +14,11 @@
 	<name>json-utils</name>
 
 	<packaging>jar</packaging>
-	
+
+	<properties>
+		<jackson-databind.version>2.16.0</jackson-databind.version>
+	</properties>
+
 	<distributionManagement>
 		<repository>
 			<id>github</id>
@@ -29,4 +33,12 @@
 			<url>https://maven.pkg.github.com/WJ-van-Hoek/parent-pom</url>
 		</repository>
 	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-databind.version}</version>
+		</dependency>
+	</dependencies>
 </project>
