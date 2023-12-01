@@ -11,7 +11,7 @@
  * </p>
  * <p>
  * Usage:
- * 
+ *
  * <pre>
  * {@code
  * // Example usage of the classes in this package
