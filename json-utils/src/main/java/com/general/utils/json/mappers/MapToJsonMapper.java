@@ -14,6 +14,8 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Utility class for mapping a {@code Map<String, Object>} to its JSON
  * representation using Jackson ObjectMapper.
@@ -27,6 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
  * @see com.fasterxml.jackson.databind.ObjectMapper
  */
+@Slf4j
 public final class MapToJsonMapper {
 
     // Private constructor to prevent instantiation of the utility class.
@@ -49,6 +52,13 @@ public final class MapToJsonMapper {
         } catch (Exception e) {
             // Print the exception to the standard error stream.
             e.printStackTrace();
+            log.error("Map could not be written to string");
+            for (Map.Entry<String, Object> entry : map.entrySet()) {
+                String key = entry.getKey();
+                Object value = entry.getValue();
+                log.info("Key: ".concat(key));
+                log.info("Value: ".concat(value.toString()));
+            }
             return null;
         }
     }
