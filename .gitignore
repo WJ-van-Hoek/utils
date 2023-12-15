@@ -145,3 +145,15 @@ replay_pid*
 /json-utils/.settings/org.springframework.ide.eclipse.prefs
 /docker-utils/.settings/org.eclipse.core.resources.prefs
 /object-utils/.settings/org.eclipse.core.resources.prefs
+/json-utils/.checkstyle
+/json-utils/.settings/org.eclipse.jdt.ui.prefs
+/json-utils/target/classes/META-INF/MANIFEST.MF
+/json-utils/target/classes/META-INF/maven/com.general.utils/json-utils/pom.properties
+/json-utils/target/classes/META-INF/maven/com.general.utils/json-utils/pom.xml
+/json-utils/target/maven-archiver/pom.properties
+/json-utils/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+/json-utils/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+/json-utils/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+/json-utils/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+/json-utils/target/surefire-reports/TEST-com.general.utils.json.mappers.MapToJsonMapperTest.xml
+/json-utils/target/surefire-reports/com.general.utils.json.mappers.MapToJsonMapperTest.txt
