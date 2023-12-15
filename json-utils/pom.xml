@@ -10,7 +10,7 @@
 
 	<groupId>com.general.utils</groupId>
 	<artifactId>json-utils</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>json-utils</name>
 
 	<packaging>jar</packaging>
