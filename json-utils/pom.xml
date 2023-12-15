@@ -10,7 +10,7 @@
 
 	<groupId>com.general.utils</groupId>
 	<artifactId>json-utils</artifactId>
-	<version>0.0.0</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>json-utils</name>
 
 	<packaging>jar</packaging>
@@ -39,6 +39,12 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson-databind.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.4.14</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
