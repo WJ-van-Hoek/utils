@@ -50,10 +50,13 @@ public final class ObjectToMapMapper {
      * as keys and their values as values.
      * @throws NullPointerException if the provided object is {@code null}.
      */
-    public static <T> Map<String, Object> convertObjectToMap(final T object) {
+    public static <T> Map<String, Object> convertObjectToMap(final T object, final boolean superClass) {
         Map<String, Object> objectMap = new HashMap<>();
 
         Class<?> clazz = object.getClass();
+        if (superClass) {
+            clazz = clazz.getSuperclass();
+        }
         Field[] fields = clazz.getDeclaredFields();
 
         for (Field field : fields) {
