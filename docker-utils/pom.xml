@@ -10,7 +10,7 @@
 
 	<groupId>com.general.utils</groupId>
 	<artifactId>docker-utils</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<name>docker-utils</name>
 
 	<packaging>jar</packaging>
