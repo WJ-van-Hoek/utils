@@ -5,7 +5,7 @@
 
   <repositories>
 	<repository>
-	  <id>github</id>
+	  <id>github-parent-pom</id>
 	  <url>https://maven.pkg.github.com/WJ-van-Hoek/parent-pom</url>
 	  <snapshots>
 		<enabled>true</enabled>
@@ -16,7 +16,7 @@
 
   <servers>
     <server>
-      <id>github</id>
+      <id>github-parent-pom</id>
 	  <username>WJ-van-Hoek</username>
       <password>${parent_pom_read_token}</password>
     </server>
