@@ -9,10 +9,10 @@
 	</parent>
 
 	<groupId>com.general.utils</groupId>
-	<artifactId>list-utils</artifactId>
+	<artifactId>collection-utils</artifactId>
 	<version>0.0.1</version>
-	<name>object-utils</name>
-	<description>Utils that apply to lists</description>
+	<name>collection-utils</name>
+	<description>Utils that apply to collections</description>
 
 	<packaging>jar</packaging>
 

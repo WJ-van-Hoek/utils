@@ -1,4 +1,4 @@
-package com.general.utils.list;
+package com.general.utils.collection;
 
 /**
  * Represents an indexed object
