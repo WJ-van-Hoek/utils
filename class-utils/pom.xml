@@ -9,10 +9,10 @@
 	</parent>
 
 	<groupId>com.general.utils</groupId>
-	<artifactId>collection-utils</artifactId>
+	<artifactId>class-utils</artifactId>
 	<version>0.0.1</version>
-	<name>collection-utils</name>
-	<description>Utils that apply to collections</description>
+	<name>class-utils</name>
+	<description>Utils that apply to all class</description>
 
 	<packaging>jar</packaging>
 
@@ -30,5 +30,14 @@
 			<url>https://maven.pkg.github.com/WJ-van-Hoek/parent-pom</url>
 		</repository>
 	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

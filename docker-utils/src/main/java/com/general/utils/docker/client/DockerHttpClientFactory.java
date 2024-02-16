@@ -30,22 +30,17 @@ public final class DockerHttpClientFactory {
     }
 
     /**
-     * Creates a Docker HTTP client based on the provided Docker client
-     * configuration.
+     * Creates a Docker HTTP client based on the provided Docker client configuration.
      *
      * @param config The Docker client configuration.
-     * @return A DockerHttpClient configured with the provided Docker client
-     * configuration.
-     * @throws NullPointerException If the provided Docker client configuration
-     * is null.
+     * @return A DockerHttpClient configured with the provided Docker client configuration.
+     * @throws NullPointerException If the provided Docker client configuration is null.
      * @see DockerHttpClient
      * @see DockerClientConfig
      * @see ApacheDockerHttpClient.Builder
      */
-    public static DockerHttpClient createDockerHttpClient(
-            final DockerClientConfig config) {
-        return new ApacheDockerHttpClient.Builder()
-                .dockerHost(config.getDockerHost())
-                .sslConfig(config.getSSLConfig()).build();
+    public static DockerHttpClient createDockerHttpClient(final DockerClientConfig config) {
+        return new ApacheDockerHttpClient.Builder().dockerHost(config.getDockerHost()).sslConfig(config.getSSLConfig())
+                .build();
     }
 }

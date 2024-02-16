@@ -15,22 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The {@code ObjectToMapMapper} class provides a utility for converting objects
- * of any type to a {@code Map}. It extracts the fields and their corresponding
- * values from the object and stores them in a {@code Map<String, Object>}.
+ * The {@code ObjectToMapMapper} class provides static methods to convert an object to a map of its fields and values.
  *
- * <p>This class is marked as {@code final} and has a private constructor,
- * indicating that it is not meant to be extended or instantiated, as it only
- * contains static methods for mapping objects to maps.
- *
- * <p>The main method, {@link #convertObjectToMap(Object)}, takes an object of
- * any type and returns a {@code Map} containing the names of the object's
- * fields as keys and their corresponding values as values.
- *
- * <p>Note: The fields are accessed using reflection, and if a field cannot be
- * accessed due to visibility restrictions, it will be ignored, and an exception
- * will be logged.
- *
+ * <p>
+ * This utility class is marked as {@code final} and has a private constructor, indicating that it is not meant to be
+ * extended or instantiated.
  */
 public final class ObjectToMapMapper {
 
@@ -41,14 +30,12 @@ public final class ObjectToMapMapper {
     }
 
     /**
-     * Converts an object of any type to a {@code Map} by extracting its fields
-     * and values.
+     * Converts the specified object to a map of its fields and values.
      *
-     * @param object The object to be converted to a {@code Map}.
-     * @param <T>    The type of the object.
-     * @return A {@code Map<String, Object>} containing the object's field names
-     * as keys and their values as values.
-     * @throws NullPointerException if the provided object is {@code null}.
+     * @param object The object to be converted to a map.
+     * @param superClass {@code true} if fields from superclasses should also be included, {@code false} otherwise.
+     * @param <T> The type of the object.
+     * @return A {@code Map} containing the fields and values of the object.
      */
     public static <T> Map<String, Object> convertObjectToMap(final T object, final boolean superClass) {
         Map<String, Object> objectMap = new HashMap<>();
