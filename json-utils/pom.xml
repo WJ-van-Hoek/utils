@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.general</groupId>
 		<artifactId>parent-pom</artifactId>
-		<version>0.0.7</version>
+		<version>0.1.3</version>
 	</parent>
 
 	<groupId>com.general.utils</groupId>
@@ -41,4 +41,14 @@
 			<version>${jackson-databind.version}</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

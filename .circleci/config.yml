@@ -3,37 +3,103 @@
 version: 2.1
 
 orbs:
-  codecov: codecov/codecov@3.3.0
+  codecov: codecov/codecov@4.0.1
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+env:
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}  
+
 jobs:
-  # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-  build:
+    test-docker-utils:
+        docker:
+          - image: cimg/openjdk:17.0
+        steps:
+          - checkout
+          - run:
+              name: Test & Report Docker-Utils
+              command: |
+                mvn -s .circleci/settings.xml -f docker-utils/pom.xml clean test jacoco:report -Dspring.profiles.active=default
+                mv docker-utils/target/site/jacoco/jacoco.xml docker-utils/target/site/jacoco/docker-utils-jacoco.xml
+          - persist_to_workspace:
+              root: docker-utils/target/site/jacoco
+              paths:
+                - docker-utils-jacoco.xml
 
-    docker:
-      - image: cimg/openjdk:17.0
-    
-    working_directory: ~/utils
+    test-object-utils:
+        docker:
+          - image: cimg/openjdk:17.0    
+        steps:
+          - checkout
+          - run:
+              name: Test & Report Object-Utils
+              command: |
+                mvn -s .circleci/settings.xml -f object-utils/pom.xml clean test jacoco:report -Dspring.profiles.active=default
+                mv object-utils/target/site/jacoco/jacoco.xml object-utils/target/site/jacoco/object-utils-jacoco.xml
+          - persist_to_workspace:
+              root: object-utils/target/site/jacoco
+              paths:
+                - object-utils-jacoco.xml
 
-    steps:
-      - checkout
-      - run:
-          name: Build and Install Docker-Utils
-          command: mvn -s .circleci/settings.xml -f docker-utils/pom.xml clean install -Dspring.profiles.active=default
-      - run:
-          name: Build and Install Object-Utils
-          command: mvn -s .circleci/settings.xml -f object-utils/pom.xml clean install -Dspring.profiles.active=default
-      - run:
-          name: Build and Install Json-Utils
-          command: mvn -s .circleci/settings.xml -f json-utils/pom.xml clean install -Dspring.profiles.active=default
-      - codecov/upload
-          
-      - store_test_results:
-          path: target/surefire-reports
+    test-json-utils:
+      docker:
+        - image: cimg/openjdk:17.0    
+      steps:
+        - checkout
+        - run:
+            name: Test & Report Json-Utils
+            command: |
+              mvn -s .circleci/settings.xml -f json-utils/pom.xml clean test jacoco:report -Dspring.profiles.active=default
+              mv json-utils/target/site/jacoco/jacoco.xml json-utils/target/site/jacoco/json-utils-jacoco.xml
+        - persist_to_workspace:
+            root: json-utils/target/site/jacoco
+            paths:
+              - json-utils-jacoco.xml
+
+    test-class-utils:
+      docker:
+        - image: cimg/openjdk:17.0          
+      steps:
+        - checkout
+        - run:
+            name: Test & Report Class-Utils
+            command: |
+              mvn -s .circleci/settings.xml -f class-utils/pom.xml clean test jacoco:report -Dspring.profiles.active=default
+              mv class-utils/target/site/jacoco/jacoco.xml class-utils/target/site/jacoco/class-utils-jacoco.xml
+        - persist_to_workspace:
+            root: class-utils/target/site/jacoco
+            paths:
+              - class-utils-jacoco.xml
+
+    upload-to-codecov:
+
+      working_directory: ~/utils
+
+      docker:
+        - image: cimg/openjdk:17.0     
+
+      steps:
+        - checkout
+        - attach_workspace:
+            at: ~/utils
+        - codecov/upload:
+              file: json-utils-jacoco.xml
+        - codecov/upload:
+              file: class-utils-jacoco.xml
+        - codecov/upload:
+              file: docker-utils-jacoco.xml
+        - codecov/upload:
+              file: object-utils-jacoco.xml                           
 
 workflows:
-  build-and-test:
+  version: 2
+  test-and-report:
     jobs:
-      - build
-      
+      - test-docker-utils
+      - test-object-utils
+      - test-json-utils
+      - test-class-utils
+      - upload-to-codecov:
+          requires:
+          - test-json-utils
+          - test-class-utils
+          - test-docker-utils
+          - test-object-utils 
