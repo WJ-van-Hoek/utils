@@ -10,7 +10,7 @@
 
 	<groupId>com.general.utils</groupId>
 	<artifactId>class-utils</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>class-utils</name>
 	<description>Utils that apply to all class</description>
 
