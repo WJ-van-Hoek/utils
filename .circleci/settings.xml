@@ -18,7 +18,7 @@
     <server>
       <id>github-parent-pom</id>
 	  <username>WJ-van-Hoek</username>
-      <password>${parent_pom_read_token}</password>
+      <password>${_READ_PACKAGE}</password>
     </server>
   </servers>
 </settings>
