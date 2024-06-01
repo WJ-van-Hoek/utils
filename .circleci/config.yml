@@ -2,104 +2,67 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-orbs:
-  codecov: codecov/codecov@4.0.1
-
-env:
-  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}  
+parameters:
+  update-properties:
+    default: false
+    type: boolean    
 
 jobs:
-    test-docker-utils:
-        docker:
-          - image: cimg/openjdk:17.0
-        steps:
+    package-docker-utils:
+    	docker:
+          - image: maven:3.8.4-openjdk-17
+    	working_directory: /docker-utils
+    	steps:
           - checkout
-          - run:
-              name: Test & Report Docker-Utils
-              command: |
-                mvn -s .circleci/settings.xml -f docker-utils/pom.xml clean test jacoco:report -Dspring.profiles.active=default
-                mv docker-utils/target/site/jacoco/jacoco.xml docker-utils/target/site/jacoco/docker-utils-jacoco.xml
-          - persist_to_workspace:
-              root: docker-utils/target/site/jacoco
-              paths:
-                - docker-utils-jacoco.xml
 
-    test-object-utils:
+          - run:
+              name: Clean and Package Docker-Utils
+              command: |
+                mvn -s .circleci/settings.xml -f docker-utils/pom.xml clean package -Dspring.profiles.active=default
+
+    package-object-utils:
         docker:
-          - image: cimg/openjdk:17.0    
-        steps:
+          - image: maven:3.8.4-openjdk-17  
+     	working_directory: /object-utils
+    	steps:
           - checkout
+          
           - run:
-              name: Test & Report Object-Utils
+              name: Clean and Package Object-Utils
               command: |
-                mvn -s .circleci/settings.xml -f object-utils/pom.xml clean test jacoco:report -Dspring.profiles.active=default
-                mv object-utils/target/site/jacoco/jacoco.xml object-utils/target/site/jacoco/object-utils-jacoco.xml
-          - persist_to_workspace:
-              root: object-utils/target/site/jacoco
-              paths:
-                - object-utils-jacoco.xml
+                mvn -s .circleci/settings.xml -f object-utils/pom.xml clean package -Dspring.profiles.active=default
 
-    test-json-utils:
-      docker:
-        - image: cimg/openjdk:17.0    
-      steps:
-        - checkout
-        - run:
-            name: Test & Report Json-Utils
-            command: |
-              mvn -s .circleci/settings.xml -f json-utils/pom.xml clean test jacoco:report -Dspring.profiles.active=default
-              mv json-utils/target/site/jacoco/jacoco.xml json-utils/target/site/jacoco/json-utils-jacoco.xml
-        - persist_to_workspace:
-            root: json-utils/target/site/jacoco
-            paths:
-              - json-utils-jacoco.xml
+    package-json-utils:
+        docker:
+          - image: maven:3.8.4-openjdk-17  
+     	working_directory: /json-utils
+    	steps:
+          - checkout
+          
+          - run:
+              name: Clean and Package Json-Utils
+              command: |
+                mvn -s .circleci/settings.xml -f json-utils/pom.xml clean package -Dspring.profiles.active=default
 
-    test-class-utils:
-      docker:
-        - image: cimg/openjdk:17.0          
-      steps:
-        - checkout
-        - run:
-            name: Test & Report Class-Utils
-            command: |
-              mvn -s .circleci/settings.xml -f class-utils/pom.xml clean test jacoco:report -Dspring.profiles.active=default
-              mv class-utils/target/site/jacoco/jacoco.xml class-utils/target/site/jacoco/class-utils-jacoco.xml
-        - persist_to_workspace:
-            root: class-utils/target/site/jacoco
-            paths:
-              - class-utils-jacoco.xml
-
-    upload-to-codecov:
-
-      working_directory: ~/utils
-
-      docker:
-        - image: cimg/openjdk:17.0     
-
-      steps:
-        - checkout
-        - attach_workspace:
-            at: ~/utils
-        - codecov/upload:
-              file: json-utils-jacoco.xml
-        - codecov/upload:
-              file: class-utils-jacoco.xml
-        - codecov/upload:
-              file: docker-utils-jacoco.xml
-        - codecov/upload:
-              file: object-utils-jacoco.xml                           
+    package-class-utils:
+        docker:
+          - image: maven:3.8.4-openjdk-17  
+     	working_directory: /class-utils
+    	steps:
+          - checkout
+          
+          - run:
+              name: Clean and Package Class-Utils
+              command: |
+                mvn -s .circleci/settings.xml -f class-utils/pom.xml clean package -Dspring.profiles.active=default
 
 workflows:
   version: 2
-  test-and-report:
+  package:
+    when:
+      not: << pipeline.parameters.update-properties >>
     jobs:
-      - test-docker-utils
-      - test-object-utils
-      - test-json-utils
-      - test-class-utils
-      - upload-to-codecov:
-          requires:
-          - test-json-utils
-          - test-class-utils
-          - test-docker-utils
-          - test-object-utils 
+      - package-docker-utils
+      - package-object-utils
+      - package-json-utils
+      - package-class-utils
