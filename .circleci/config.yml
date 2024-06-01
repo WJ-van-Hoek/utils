@@ -9,10 +9,10 @@ parameters:
 
 jobs:
     package-docker-utils:
-    	docker:
-          - image: maven:3.8.4-openjdk-17
-    	working_directory: /docker-utils
-    	steps:
+      docker:
+        - image: maven:3.8.4-openjdk-17
+        working_directory: /docker-utils
+        steps:
           - checkout
 
           - run:
@@ -23,10 +23,10 @@ jobs:
     package-object-utils:
         docker:
           - image: maven:3.8.4-openjdk-17  
-     	working_directory: /object-utils
-    	steps:
+        working_directory: /object-utils
+        steps:
           - checkout
-          
+
           - run:
               name: Clean and Package Object-Utils
               command: |
@@ -35,10 +35,10 @@ jobs:
     package-json-utils:
         docker:
           - image: maven:3.8.4-openjdk-17  
-     	working_directory: /json-utils
-    	steps:
+        working_directory: /json-utils
+        steps:
           - checkout
-          
+
           - run:
               name: Clean and Package Json-Utils
               command: |
@@ -47,10 +47,10 @@ jobs:
     package-class-utils:
         docker:
           - image: maven:3.8.4-openjdk-17  
-     	working_directory: /class-utils
-    	steps:
+        working_directory: /class-utils
+        steps:
           - checkout
-          
+
           - run:
               name: Clean and Package Class-Utils
               command: |
